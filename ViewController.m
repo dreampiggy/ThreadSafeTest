@@ -107,7 +107,7 @@ NSMutableDictionary<NSString *,NSNumber *> *dict;
 - (void)testAll {
     int loop = 20; //how much loop in an experience
     int times = 1000; //how much experiences
-    int read = 4; //how much read access in each loop
+    int read = 3; //how much read access in each loop
     int write = 1; //how much write access in each loop
     for (int i = 0; i < times; i++) {
         TestThreadSafeMode(Synchronize,synchronizedString,i,loop,read,write)
@@ -119,7 +119,7 @@ NSMutableDictionary<NSString *,NSNumber *> *dict;
         TestThreadSafeMode(Semaphore,semaphoreString,i,loop,read,write)
         TestThreadSafeMode(RWLock,rwlockString,i,loop,read,write)
         TestThreadSafeMode(UnfairLock,unfairlockString,i,loop,read,write)
-        TestThreadSafeMode(Barrier,barrierString,i,loop,read,write)
+        TestThreadSafeMode(Barrier,barrierString,i,loop,read,write) // more than 64 threads such as 20 loop with 3:1 reader-writer will cause dead-lock
         TestThreadSafeMode(Atomic,atomicString,i,loop,read,write)
     }
     dispatch_barrier_sync(self.barrierQueue, ^{
