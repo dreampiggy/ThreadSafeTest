@@ -105,8 +105,8 @@ NSMutableDictionary<NSString *,NSNumber *> *dict;
 #pragma mark - Test Code
 
 - (void)testAll {
-    int loop = 20; //how much loop in an experience
-    int times = 1000; //how much experiences
+    int loop = 20; //how much loop in one experienment
+    int times = 1000; //how much experienments
     int read = 3; //how much read access in each loop
     int write = 1; //how much write access in each loop
     for (int i = 0; i < times; i++) {
